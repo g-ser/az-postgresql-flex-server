@@ -4,16 +4,19 @@ from langchain_community.document_loaders import TextLoader
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain.vectorstores.pgvector import PGVector
 import os
+import json
 
-pghost = os.getenv("PGHOST")
-pguser = os.getenv("PGUSER")
-pgpassword = os.getenv("PGPASSWORD")
-pgdatabase = os.getenv("PGDATABASE")
-pgport = os.getenv("PGPORT")
-openai_api_key = os.getenv("OPENAI_API_KEY")
-az_openai_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-deployment_name = "embeddings"
-collection_name = "state_of_the_union_vectors"
+config = json.load(open("config.json"))
+
+pghost = config["pghost"]
+pguser = config["pguser"]
+pgpassword = config["pgpassword"]
+pgdatabase = config["pgdatabase"]
+pgport = config["pgport"]
+openai_api_key = config["openai_api_key"]
+az_openai_endpoint = config["az_openai_endpoint"]
+deployment_name = config["deployment_name"]
+collection_name = config["collection_name"]
 
 
 # Read the text file 
@@ -38,6 +41,7 @@ conn_string = f"postgresql+psycopg2://{pguser}:{pgpassword}@{pghost}:{pgport}/{p
 db = PGVector.from_documents(embedding=embeddings, documents=texts, collection_name=collection_name, connection_string=conn_string)
 
 query = "What did the president say about Russia?"
+# query = "What was the nationality of Dostoevsky?"
 
 # Vectorize the query and call the similarity_search_with_score method to get the most similar document to the query
 similar = db.similarity_search_with_score(query, k=2)
