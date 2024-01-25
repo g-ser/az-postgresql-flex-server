@@ -34,6 +34,7 @@ doc_vectors = embeddings.embed_documents([t.page_content for t in texts[:5]])
 conn_string = f"postgresql+psycopg2://{pguser}:{pgpassword}@{pghost}:{pgport}/{pgdatabase}"
 
 # Create a PGVector db object
+# From the PGVector class call the from_documents static method to create the db object
 db = PGVector.from_documents(embedding=embeddings, documents=texts, collection_name=collection_name, connection_string=conn_string)
 
 query = "What did the president say about Russia?"
