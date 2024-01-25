@@ -1,0 +1,11 @@
+{
+    "deployment_name": "<THE_NAME_OF_YOUR_DEPLOYMENT_IN_AZURE_OPENAI>",
+    "collection_name": "<THE_NAME_OF_THE_COLLECTION_PASSED_TO_THE_CONSTRUCTOR_OF_PGVECTOR_CLASS>",
+    "pghost": "<THE_HOST_OF_THE_POSTGRESQL_DATABASE>",
+    "pguser": "<THE_NAME_OF_THE_USER_OF_THE_DATABASE>",
+    "pgpassword": "<THE_PASSWORD_OF_THE_USER_OF_THE_DATABASE>",
+    "pgdatabase": "<THE_NAME_OF_THE_DATABASE>",
+    "pgport": "<THE_PORT_OF_THE_DATABASE>",
+    "openai_api_key": "<THE_KEY_USED_TO_ACCESS_THE_API_OF_AZURE_AI_SERVICE>", 
+    "az_openai_endpoint": "<THE_ENDPOINT_OF_THE_AZURE_OPENAI_SERVICE>"
+}
