@@ -39,6 +39,7 @@ db = PGVector.from_documents(embedding=embeddings, documents=texts, collection_n
 
 query = "What did the president say about Russia?"
 
+# Vectorize the query and call the similarity_search_with_score method to get the most similar document to the query
 similar = db.similarity_search_with_score(query, k=2)
 
 for doc in similar:
